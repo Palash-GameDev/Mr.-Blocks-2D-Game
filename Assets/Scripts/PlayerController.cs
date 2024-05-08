@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D _rb2D;
     public float speed = 5f;
+    public GameObject UiPanel;
     
     // Start is called before the first frame update
     void Start()
@@ -43,10 +44,17 @@ public class PlayerController : MonoBehaviour
     {
         if(other.tag == "Door")
         {
+            UiPanel.SetActive(true);
             Debug.Log("Player collided with " + other.name);
             Debug.Log("Level Completed!!!!!!!!!!!!!!!!!");
         }
         
+    }
+
+    public void OnPlayAgain()
+    {
+        UiPanel.SetActive(false);
+        this.transform.position = new Vector3(0,0,0);
     }
 
 
